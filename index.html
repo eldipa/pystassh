@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pystassh by julienc91</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Pystassh</h1>
+        <p>An easy to use libssh wrapper to execute commands on a remote server via SSH with Python.</p>
+
+        <p class="view"><a href="https://github.com/julienc91/pystassh">View the Project on GitHub <small>julienc91/pystassh</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/julienc91/pystassh/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/julienc91/pystassh/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/julienc91/pystassh">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="https://travis-ci.org/julienc91/pystassh"><img src="https://travis-ci.org/julienc91/pystassh.png" alt="Build Status"></a>
+<a href="https://coveralls.io/github/julienc91/pystassh?branch=master"><img src="https://coveralls.io/repos/github/julienc91/pystassh/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="http://pystassh.readthedocs.org/en/latest/"><img src="https://readthedocs.org/projects/pystassh/badge/" alt="Documentation"></a></p>
+
+<h1>
+<a id="pystassh" class="anchor" href="#pystassh" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pystassh</h1>
+
+<p>An easy to use libssh wrapper to execute commands on a remote server via SSH with Python.</p>
+
+<ul>
+<li>Author: Julien CHAUMONT (<a href="https://julienc.io">https://julienc.io</a>)</li>
+<li>Version: 1.0</li>
+<li>Date: 2016-07-30</li>
+<li>Licence: MIT</li>
+<li>Url: <a href="http://github.com/julienc91/pystassh">http://github.com/julienc91/pystassh</a>
+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Just use <code>pip</code> to install the package:</p>
+
+<pre><code>pip install pystassh
+</code></pre>
+
+<p><code>pystassh</code> is working with python 2.7, python 3+ and pypy.</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p><code>pystassh</code> is using libssh to work, you will have to install the library before using
+<code>pystassh</code>. Only version 0.7.3 was used during the development, but versions 0.5 and above should work fine as well with <code>pystassh</code>.
+Visit <a href="https://www.libssh.org/get-it/">libssh's official website</a> for more information.</p>
+
+<p>On Debian and Ubuntu:</p>
+
+<pre><code>apt-get install libssh-4
+</code></pre>
+
+<p>On Fedora:</p>
+
+<pre><code>dnf install libssh
+</code></pre>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Running simple commands:</p>
+
+<pre><code>&gt;&gt;&gt; from pystassh import Session
+&gt;&gt;&gt; with Session('remote_host.org', username='foo', password='baz') as ssh_session:
+...     res = ssh_session.execute('whoami')
+&gt;&gt;&gt; res.stdout
+'foo'
+</code></pre>
+
+<p>Handling errors:</p>
+
+<pre><code>&gt;&gt;&gt; from pystassh import Session
+&gt;&gt;&gt; with Session('remote_host.org', username='foo', password='baz') as ssh_session:
+...     res = ssh_session.execute('whoam')
+&gt;&gt;&gt; res.stderr
+'bash: whoam : command not found'
+</code></pre>
+
+<p>Running multiple commands:</p>
+
+<pre><code>&gt;&gt;&gt; from pystassh import Session
+&gt;&gt;&gt; with Session('remote_host.org', username='foo', password='baz') as ssh_session:
+...     ssh_session.execute('echo "bar" &gt; /tmp/foo')
+...     res = ssh_session.execute('cat /tmp/foo')
+&gt;&gt;&gt; res.stdout
+'bar'
+</code></pre>
+
+<p>Use a session without a <code>with</code> block:</p>
+
+<pre><code>&gt;&gt;&gt; from pystassh import Session
+&gt;&gt;&gt; ssh_session = Session('remote_host.org', username='foo', password='baz')
+&gt;&gt;&gt; ssh_session.connect()
+&gt;&gt;&gt; res = ssh_session.execute('whoami')
+&gt;&gt;&gt; res.stdout
+'foo'
+&gt;&gt;&gt; ssh_session.disconnect()
+</code></pre>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>The complete documentation is available at: <a href="http://pystassh.readthedocs.org/en/latest/">http://pystassh.readthedocs.org/en/latest/</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/julienc91">julienc91</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
