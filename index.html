@@ -39,10 +39,10 @@
 
 <ul>
 <li>Author: Julien CHAUMONT (<a href="https://julienc.io">https://julienc.io</a>)</li>
-<li>Version: 1.0</li>
-<li>Date: 2016-07-30</li>
+<li>Version: 1.0.1</li>
+<li>Date: 2016-08-02</li>
 <li>Licence: MIT</li>
-<li>Url: <a href="http://github.com/julienc91/pystassh">http://github.com/julienc91/pystassh</a>
+<li>Url: <a href="https://julienc91.github.io/pystassh/">https://julienc91.github.io/pystassh/</a>
 </li>
 </ul>
 
@@ -54,23 +54,24 @@
 <pre><code>pip install pystassh
 </code></pre>
 
-<p><code>pystassh</code> is working with python 2.7, python 3+ and pypy.</p>
+<p><code>pystassh</code> is working with python 3+ and pypy.</p>
 
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
 
 <p><code>pystassh</code> is using libssh to work, you will have to install the library before using
 <code>pystassh</code>. Only version 0.7.3 was used during the development, but versions 0.5 and above should work fine as well with <code>pystassh</code>.
-Visit <a href="https://www.libssh.org/get-it/">libssh's official website</a> for more information.</p>
+Visit <a href="https://www.libssh.org/get-it/">libssh's official website</a> for more information.
+<code>libffi-dev</code> is also required by the <code>cffi</code> module.</p>
 
 <p>On Debian and Ubuntu:</p>
 
-<pre><code>apt-get install libssh-4
+<pre><code>apt-get install libssh-4 libffi-dev
 </code></pre>
 
 <p>On Fedora:</p>
 
-<pre><code>dnf install libssh
+<pre><code>dnf install libssh libffi-devel
 </code></pre>
 
 <h2>
